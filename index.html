@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Awareness Quiz</title>
+    <title>Mental Health Self-Assessment Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Mental Health Awareness Quiz</h1>
-        <div id="progress-container">
-            <progress id="progress-bar" value="0" max="100"></progress>
-        </div>
+        <h1>Mental Health Self-Assessment</h1>
         <form id="quiz-form">
-            <div class="question" id="question1">
-                <p>1. Are you feeling overwhelmed or stressed recently?</p>
-                <label><input type="radio" name="q1" value="1"> 1 - Not at all</label><br>
-                <label><input type="radio" name="q1" value="2"> 2 - Occasionally</label><br>
-                <label><input type="radio" name="q1" value="3"> 3 - Sometimes</label><br>
-                <label><input type="radio" name="q1" value="4"> 4 - Frequently</label><br>
-                <label><input type="radio" name="q1" value="5"> 5 - Always</label><br>
-            </div>
-            <div class="question" id="question2">
+            <div id="questions-container">
+                <div class="question active" id="question1">
+                    <p>1. Are you feeling overwhelmed or stressed recently?</p>
+                    <label><input type="radio" name="q1" value="1"> 1 - Not at all</label><br>
+                    <label><input type="radio" name="q1" value="2"> 2 - Occasionally</label><br>
+                    <label><input type="radio" name="q1" value="3"> 3 - Sometimes</label><br>
+                    <label><input type="radio" name="q1" value="4"> 4 - Frequently</label><br>
+                    <label><input type="radio" name="q1" value="5"> 5 - Always</label><br>
+                </div>
+                <!-- Add other questions similarly -->
+                <div class="question" id="question2">
+                    <p>2. Have you felt down, depressed, or hopeless in the past week?</p>
+                    <label><input type="radio" name="q2" value="1"> 1 - Not at all</label><br>
+                    <label><input type="radio" name="q2" value="2"> 2 - Occasionally</label><br>
+                    <label><input type="radio" name="q2" value="3"> 3 - Sometimes</label><br>
+                    <label><input type="radio" name="q2" value="4"> 4 - Frequently</label><br>
+                    <label><input type="radio" name="q2" value="5"> 5 - Always</label><br>
+                </div>
+                 <div class="question" id="question2">
                 <p>2. Do you have trouble sleeping or experience changes in appetite?</p>
                 <label><input type="radio" name="q2" value="1"> 1 - Not at all</label><br>
                 <label><input type="radio" name="q2" value="2"> 2 - Occasionally</label><br>
@@ -173,15 +180,17 @@
                 <label><input type="radio" name="q20" value="4"> 4 - Frequently</label><br>
                 <label><input type="radio" name="q20" value="5"> 5 - Always</label><br>
             </div>
-            <button type="button" id="next-btn">Next Question</button>
+            <button type="button" id="next-btn">Next</button>
         </form>
         <div id="result-container" style="display: none;">
-            <h2>Your Result</h2>
-            <p id="total-score">Score: 0</p>
-            <p id="feedback-message">Feedback will be shown here.</p>
+            <h2>Results</h2>
+            <p id="total-score"></p>
+            <p id="feedback-message"></p>
             <button id="retake-btn">Retake the Quiz</button>
         </div>
+        <progress id="progress-bar" value="0" max="100"></progress>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
