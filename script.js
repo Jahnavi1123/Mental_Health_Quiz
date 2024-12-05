@@ -1,59 +1,28 @@
-const questions = document.querySelectorAll('.question');
-const nextButton = document.getElementById('next-btn');
-const resultContainer = document.getElementById('result-container');
-const totalScoreElement = document.getElementById('total-score');
-const feedbackMessageElement = document.getElementById('feedback-message');
-const progressBar = document.getElementById('progress-bar');
-const retakeButton = document.getElementById('retake-btn');
-let currentQuestionIndex = 0;
-let score = 0;
-questions[currentQuestionIndex].classList.add('active');
-
-function updateProgressBar() {
-    const progress = (currentQuestionIndex / (questions.length - 1)) * 100;
-    progressBar.value = progress;
-}
-
-nextButton.addEventListener('click', () => {
-    const selectedAnswer = document.querySelector(`input[name="q${currentQuestionIndex + 1}"]:checked`);
-    if (!selectedAnswer) {
-        alert('Please select an answer.');
-        return;
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    let score = 0;
+    const form = document.getElementById('quiz-form');
+    
+    // Loop through each question
+    for (let i = 1; i <= 4; i++) {
+        let answer = form.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === '1') {
+            score += 1;
+        }
     }
-    score += parseInt(selectedAnswer.value);
-    questions[currentQuestionIndex].classList.remove('active');
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        questions[currentQuestionIndex].classList.add('active');
-        updateProgressBar();
-    } else {
-        showResults();
-    }
-});
+    
+    // Generate the result message based on the score
+    const resultMessage = (score <= 1)
+        ? 'Your mental health seems good, but try to stay mindful.'
+        : (score <= 3)
+        ? 'You might be facing some challenges. Consider seeking support.'
+        : 'It’s important to talk to a professional and seek help.';
+    
+    // Store the score and result message in localStorage
+    localStorage.setItem('quizScore', score);
+    localStorage.setItem('quizMessage', resultMessage);
 
-function showResults() {
-    resultContainer.style.display = 'block';
-    document.getElementById('quiz-form').style.display = 'none';
-    totalScoreElement.innerText = `Score: ${score}`;
-    feedbackMessageElement.innerText = getFeedback(score);
-}
-
-function getFeedback(score) {
-    if (score <= 30) {
-        return 'You seem to have a lower level of distress. Keep it up!';
-    } else if (score <= 60) {
-        return 'You might be experiencing some mild distress. Consider seeking support.';
-    } else {
-        return 'It looks like you are going through a challenging time. Please reach out for help!';
-    }
-}
-
-retakeButton.addEventListener('click', () => {
-    currentQuestionIndex = 0;
-    score = 0;
-    resultContainer.style.display = 'none';
-    document.getElementById('quiz-form').style.display = 'block';
-    questions[currentQuestionIndex].classList.add('active');
-    updateProgressBar();
-    document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+    // Redirect to the result page
+    window.location.href = 'result.html';
 });
