@@ -1,38 +1,57 @@
+/* Apply the gradient background to the body */
 body {
+    background: linear-gradient(to right, #ffccff, #ffffff); /* Pink to White Gradient */
     font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
+    color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
+/* Style the container to make it centered and responsive */
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
+    max-width: 800px;
+    margin: 50px auto;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background to make text readable */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Header and Titles */
 h1 {
+    color: #e6007e; /* Light pinkish color for heading */
     text-align: center;
 }
 
-.question {
-    margin-bottom: 15px;
+h2 {
+    color: #ff4d94; /* A pink color for subheadings */
+    font-size: 20px;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #ff4d94;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: block;
-    margin: 20px auto;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #e6007e;
+}
+
+/* Input fields and radio buttons */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Styling for paragraphs and text */
+p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+label {
+    margin-right: 10px;
 }
